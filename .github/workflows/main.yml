@@ -26,3 +26,14 @@ jobs:
         run: npm install
       - name: Compile assets
         run: npm run prod
+
+      - name: 📦 Zip dist files
+        id: pack
+        uses: Roslovets-Inc/zip-npm-files@v1
+        with:
+          files: dist
+
+      - name: ⚙️ Unzip dist files
+        run: |
+          mkdir TODEPLOY
+          unzip ./captura.k21.global/action-teste/ -d TODEPLOY
