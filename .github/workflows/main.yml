@@ -22,11 +22,17 @@ jobs:
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
           TARGET: ${{ secrets.REMOTE_TARGET }}
 
-      - name: Install dependencies
+      - name: Instalando dependencias
         run: npm install
 
-      - name: Compile assets
+      - name: Compilando assets
         run: npm run prod
 
-      - name: List Files
-        run: cd dist && ls -la
+      - name: Copiando a pasta dist para a hospedagem
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local: ./dist
+          remote: ./captura.k21.global/action-teste/dist/
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          password: ${{ secrets.PASSWORD }}
