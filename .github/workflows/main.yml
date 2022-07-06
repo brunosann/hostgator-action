@@ -29,4 +29,4 @@ jobs:
         run: npm run prod
 
       - name: List Files
-        run: ls -la
+        run: cd dist && ls -la
