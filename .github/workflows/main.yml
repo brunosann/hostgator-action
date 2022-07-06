@@ -28,11 +28,5 @@ jobs:
       - name: Compile assets
         run: npm run prod
 
-      - name: Copy folder content recursively to remote
-        uses: garygrossgarten/github-action-scp@release
-        with:
-          local: ./dist
-          remote: ./captura.k21.global/action-teste/
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          password: ${{ secrets.PASSWORD }}
+      - name: List Files
+        run: cd dist && ls -la
